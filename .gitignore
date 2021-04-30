@@ -1,3 +1,12 @@
+# macOS
+*.DS_Store
+
+# Debug files
+Debug/
+
+# Cube IDE files
+.metadata/
+
 # Prerequisites
 *.d
 
