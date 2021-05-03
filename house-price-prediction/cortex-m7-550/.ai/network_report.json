@@ -1,7 +1,7 @@
 {
     "_allocate_inputs": 0,
     "_allocate_outputs": 0,
-    "cli_parameters": "generate --name network -m /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/predict house price/predict_house_price.h5 --type keras --compression 1 --verbosity 1 --workspace /var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace17891848786174406469486102793824 --output /Users/dominikpiorkowski/.stm32cubemx",
+    "cli_parameters": "generate --name network -m /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/predict house price/predict_house_price.h5 --type keras --compression 1 --verbosity 1 --workspace /var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace1615521674902611771578950731097001 --output /Users/dominikpiorkowski/.stm32cubemx",
     "cli_version": {
         "major": 1,
         "micro": 1,
@@ -12,7 +12,7 @@
         "factor": null,
         "layers": {}
     },
-    "date_time": "Mon May  3 13:55:14 2021",
+    "date_time": "Mon May  3 17:54:40 2021",
     "error": 0,
     "error_str": [],
     "exec_cmd": "generate",

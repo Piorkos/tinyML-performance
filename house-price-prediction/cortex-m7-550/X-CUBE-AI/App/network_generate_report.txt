@@ -1,6 +1,6 @@
 Neural Network Tools for STM32AI v1.4.1 (STM.ai v6.0.0-RC6)
-Created date       : 2021-05-03 13:55:14
-Parameters         : generate --name network -m /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/predict house price/predict_house_price.h5 --type keras --compression 1 --verbosity 1 --workspace /var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace17891848786174406469486102793824 --output /Users/dominikpiorkowski/.stm32cubemx
+Created date       : 2021-05-03 17:54:41
+Parameters         : generate --name network -m /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/predict house price/predict_house_price.h5 --type keras --compression 1 --verbosity 1 --workspace /var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace1615521674902611771578950731097001 --output /Users/dominikpiorkowski/.stm32cubemx
 
 Exec/report summary (generate)
 ------------------------------------------------------------------------------------------------------------------------
@@ -9,7 +9,7 @@ type               : keras
 c_name             : network
 compression        : None
 quantize           : None
-workspace dir      : /private/var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace17891848786174406469486102793824
+workspace dir      : /private/var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace1615521674902611771578950731097001
 output dir         : /Users/dominikpiorkowski/.stm32cubemx
 
 model_name         : predict_house_price
