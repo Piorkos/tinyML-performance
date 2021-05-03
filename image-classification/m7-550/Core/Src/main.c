@@ -133,7 +133,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  buf_len = sprintf(buf, "M7 Running inference \n");
+	  buf_len = sprintf(buf, "M7-550 Running IC inference \n");
 	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 
 	  timestamp = htim16.Instance->CNT;
