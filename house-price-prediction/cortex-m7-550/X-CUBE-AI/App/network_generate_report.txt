@@ -1,0 +1,261 @@
+Neural Network Tools for STM32AI v1.4.1 (STM.ai v6.0.0-RC6)
+Created date       : 2021-05-03 13:55:14
+Parameters         : generate --name network -m /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/predict house price/predict_house_price.h5 --type keras --compression 1 --verbosity 1 --workspace /var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace17891848786174406469486102793824 --output /Users/dominikpiorkowski/.stm32cubemx
+
+Exec/report summary (generate)
+------------------------------------------------------------------------------------------------------------------------
+model file         : /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/predict house price/predict_house_price.h5
+type               : keras
+c_name             : network
+compression        : None
+quantize           : None
+workspace dir      : /private/var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace17891848786174406469486102793824
+output dir         : /Users/dominikpiorkowski/.stm32cubemx
+
+model_name         : predict_house_price
+model_hash         : 2898a30cc251382a106a23233abbb204
+input              : input_0 [19 items, 76 B, ai_float, FLOAT32, (1, 1, 19)]
+inputs (total)     : 76 B
+output             : dense_83_nl [1 items, 4 B, ai_float, FLOAT32, (1, 1, 1)]
+outputs (total)    : 4 B
+params #           : 6,534 items (25.52 KiB)
+macc               : 6,771
+weights (ro)       : 26,136 B (25.52 KiB) 
+activations (rw)   : 304 B (304 B) 
+ram (total)        : 384 B (384 B) = 304 + 76 + 4
+
+Model name - predict_house_price ['input_0'] ['dense_83_nl']
+------------------------------------------------------------------------------------------------------------------
+id   layer (type)                 shape    param/size    macc    connected to   |   c_size   c_macc   c_type     
+------------------------------------------------------------------------------------------------------------------
+0    input_0 (Input)              (c:19)                                        |                    
+     dense_73 (Dense)             (c:19)   380/1,520     380     input_0        |                     dense()[0] 
+     dense_73_nl (Nonlinearity)   (c:19)                 19      dense_73       |                     nl()[1]    
+------------------------------------------------------------------------------------------------------------------
+1    dense_74 (Dense)             (c:19)   380/1,520     380     dense_73_nl    |                     dense()[2] 
+     dense_74_nl (Nonlinearity)   (c:19)                 19      dense_74       |                     nl()[3]    
+------------------------------------------------------------------------------------------------------------------
+2    dense_75 (Dense)             (c:38)   760/3,040     760     dense_74_nl    |                     dense()[4] 
+     dense_75_nl (Nonlinearity)   (c:38)                 38      dense_75       |                     nl()[5]    
+------------------------------------------------------------------------------------------------------------------
+3    dense_76 (Dense)             (c:38)   1,482/5,928   1,482   dense_75_nl    |                     dense()[6] 
+     dense_76_nl (Nonlinearity)   (c:38)                 38      dense_76       |                     nl()[7]    
+------------------------------------------------------------------------------------------------------------------
+4    dense_77 (Dense)             (c:38)   1,482/5,928   1,482   dense_76_nl    |                     dense()[8] 
+     dense_77_nl (Nonlinearity)   (c:38)                 38      dense_77       |                     nl()[9]    
+------------------------------------------------------------------------------------------------------------------
+5    dense_78 (Dense)             (c:19)   741/2,964     741     dense_77_nl    |                     dense()[10]
+     dense_78_nl (Nonlinearity)   (c:19)                 19      dense_78       |                     nl()[11]   
+------------------------------------------------------------------------------------------------------------------
+6    dense_79 (Dense)             (c:19)   380/1,520     380     dense_78_nl    |                     dense()[12]
+     dense_79_nl (Nonlinearity)   (c:19)                 19      dense_79       |                     nl()[13]   
+------------------------------------------------------------------------------------------------------------------
+7    dense_80 (Dense)             (c:19)   380/1,520     380     dense_79_nl    |                     dense()[14]
+     dense_80_nl (Nonlinearity)   (c:19)                 19      dense_80       |                     nl()[15]   
+------------------------------------------------------------------------------------------------------------------
+8    dense_81 (Dense)             (c:19)   380/1,520     380     dense_80_nl    |                     dense()[16]
+     dense_81_nl (Nonlinearity)   (c:19)                 19      dense_81       |                     nl()[17]   
+------------------------------------------------------------------------------------------------------------------
+9    dense_82 (Dense)             (c:8)    160/640       160     dense_81_nl    |                     dense()[18]
+     dense_82_nl (Nonlinearity)   (c:8)                  8       dense_82       |                     nl()[19]   
+------------------------------------------------------------------------------------------------------------------
+10   dense_83 (Dense)             (c:1)    9/36          9       dense_82_nl    |                     dense()[20]
+     dense_83_nl (Nonlinearity)   (c:1)                  1       dense_83       |                     nl()/o[21] 
+------------------------------------------------------------------------------------------------------------------
+model/c-model: macc=6,771/6,771  weights=26,136/26,136  activations=--/304 io=--/80
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name         : predict_house_price
+c-name             : network
+c-node #           : 22
+c-array #          : 45
+activations size   : 304
+weights size       : 26136
+macc               : 6771
+inputs             : ['input_0_output_array']
+outputs            : ['dense_83_nl_output_array']
+
+
+C-Arrays (45)
+------------------------------------------------------------------------------------------------------------------------
+c_id  name (*_array)      item/size           mem-pool     c-type       fmt    comment            
+------------------------------------------------------------------------------------------------------------------------
+0     input_0_output      19/76               user         float        float  /input             
+1     dense_73_output     19/76               activations  float        float                     
+2     dense_73_nl_output  19/76               activations  float        float                     
+3     dense_74_output     19/76               activations  float        float                     
+4     dense_74_nl_output  19/76               activations  float        float                     
+5     dense_75_output     38/152              activations  float        float                     
+6     dense_75_nl_output  38/152              activations  float        float                     
+7     dense_76_output     38/152              activations  float        float                     
+8     dense_76_nl_output  38/152              activations  float        float                     
+9     dense_77_output     38/152              activations  float        float                     
+10    dense_77_nl_output  38/152              activations  float        float                     
+11    dense_78_output     19/76               activations  float        float                     
+12    dense_78_nl_output  19/76               activations  float        float                     
+13    dense_79_output     19/76               activations  float        float                     
+14    dense_79_nl_output  19/76               activations  float        float                     
+15    dense_80_output     19/76               activations  float        float                     
+16    dense_80_nl_output  19/76               activations  float        float                     
+17    dense_81_output     19/76               activations  float        float                     
+18    dense_81_nl_output  19/76               activations  float        float                     
+19    dense_82_output     8/32                activations  float        float                     
+20    dense_82_nl_output  8/32                activations  float        float                     
+21    dense_83_output     1/4                 activations  float        float                     
+22    dense_83_nl_output  1/4                 user         float        float  /output            
+23    dense_73_weights    361/1444            weights      const float  float                     
+24    dense_73_bias       19/76               weights      const float  float                     
+25    dense_74_weights    361/1444            weights      const float  float                     
+26    dense_74_bias       19/76               weights      const float  float                     
+27    dense_75_weights    722/2888            weights      const float  float                     
+28    dense_75_bias       38/152              weights      const float  float                     
+29    dense_76_weights    1444/5776           weights      const float  float                     
+30    dense_76_bias       38/152              weights      const float  float                     
+31    dense_77_weights    1444/5776           weights      const float  float                     
+32    dense_77_bias       38/152              weights      const float  float                     
+33    dense_78_weights    722/2888            weights      const float  float                     
+34    dense_78_bias       19/76               weights      const float  float                     
+35    dense_79_weights    361/1444            weights      const float  float                     
+36    dense_79_bias       19/76               weights      const float  float                     
+37    dense_80_weights    361/1444            weights      const float  float                     
+38    dense_80_bias       19/76               weights      const float  float                     
+39    dense_81_weights    361/1444            weights      const float  float                     
+40    dense_81_bias       19/76               weights      const float  float                     
+41    dense_82_weights    152/608             weights      const float  float                     
+42    dense_82_bias       8/32                weights      const float  float                     
+43    dense_83_weights    8/32                weights      const float  float                     
+44    dense_83_bias       1/4                 weights      const float  float                     
+------------------------------------------------------------------------------------------------------------------------
+
+
+C-Layers (22)
+------------------------------------------------------------------------------------------------------------------------
+c_id  name (*_layer)  id  layer_ macc        rom         tensors                shape (array id)                       
+------------------------------------------------------------------------------------------------------------------------
+0     dense_73        0   dense  380         1520        I: input_0_output      [1, 1, 1, 19] (0)                      
+                                                         W: dense_73_weights                                           
+                                                         W: dense_73_bias                                              
+                                                         O: dense_73_output     [1, 1, 1, 19] (1)                      
+------------------------------------------------------------------------------------------------------------------------
+1     dense_73_nl     0   nl     19          0           I: dense_73_output     [1, 1, 1, 19] (1)                      
+                                                         O: dense_73_nl_output  [1, 1, 1, 19] (2)                      
+------------------------------------------------------------------------------------------------------------------------
+2     dense_74        1   dense  380         1520        I: dense_73_nl_output  [1, 1, 1, 19] (2)                      
+                                                         W: dense_74_weights                                           
+                                                         W: dense_74_bias                                              
+                                                         O: dense_74_output     [1, 1, 1, 19] (3)                      
+------------------------------------------------------------------------------------------------------------------------
+3     dense_74_nl     1   nl     19          0           I: dense_74_output     [1, 1, 1, 19] (3)                      
+                                                         O: dense_74_nl_output  [1, 1, 1, 19] (4)                      
+------------------------------------------------------------------------------------------------------------------------
+4     dense_75        2   dense  760         3040        I: dense_74_nl_output  [1, 1, 1, 19] (4)                      
+                                                         W: dense_75_weights                                           
+                                                         W: dense_75_bias                                              
+                                                         O: dense_75_output     [1, 1, 1, 38] (5)                      
+------------------------------------------------------------------------------------------------------------------------
+5     dense_75_nl     2   nl     38          0           I: dense_75_output     [1, 1, 1, 38] (5)                      
+                                                         O: dense_75_nl_output  [1, 1, 1, 38] (6)                      
+------------------------------------------------------------------------------------------------------------------------
+6     dense_76        3   dense  1482        5928        I: dense_75_nl_output  [1, 1, 1, 38] (6)                      
+                                                         W: dense_76_weights                                           
+                                                         W: dense_76_bias                                              
+                                                         O: dense_76_output     [1, 1, 1, 38] (7)                      
+------------------------------------------------------------------------------------------------------------------------
+7     dense_76_nl     3   nl     38          0           I: dense_76_output     [1, 1, 1, 38] (7)                      
+                                                         O: dense_76_nl_output  [1, 1, 1, 38] (8)                      
+------------------------------------------------------------------------------------------------------------------------
+8     dense_77        4   dense  1482        5928        I: dense_76_nl_output  [1, 1, 1, 38] (8)                      
+                                                         W: dense_77_weights                                           
+                                                         W: dense_77_bias                                              
+                                                         O: dense_77_output     [1, 1, 1, 38] (9)                      
+------------------------------------------------------------------------------------------------------------------------
+9     dense_77_nl     4   nl     38          0           I: dense_77_output     [1, 1, 1, 38] (9)                      
+                                                         O: dense_77_nl_output  [1, 1, 1, 38] (10)                     
+------------------------------------------------------------------------------------------------------------------------
+10    dense_78        5   dense  741         2964        I: dense_77_nl_output  [1, 1, 1, 38] (10)                     
+                                                         W: dense_78_weights                                           
+                                                         W: dense_78_bias                                              
+                                                         O: dense_78_output     [1, 1, 1, 19] (11)                     
+------------------------------------------------------------------------------------------------------------------------
+11    dense_78_nl     5   nl     19          0           I: dense_78_output     [1, 1, 1, 19] (11)                     
+                                                         O: dense_78_nl_output  [1, 1, 1, 19] (12)                     
+------------------------------------------------------------------------------------------------------------------------
+12    dense_79        6   dense  380         1520        I: dense_78_nl_output  [1, 1, 1, 19] (12)                     
+                                                         W: dense_79_weights                                           
+                                                         W: dense_79_bias                                              
+                                                         O: dense_79_output     [1, 1, 1, 19] (13)                     
+------------------------------------------------------------------------------------------------------------------------
+13    dense_79_nl     6   nl     19          0           I: dense_79_output     [1, 1, 1, 19] (13)                     
+                                                         O: dense_79_nl_output  [1, 1, 1, 19] (14)                     
+------------------------------------------------------------------------------------------------------------------------
+14    dense_80        7   dense  380         1520        I: dense_79_nl_output  [1, 1, 1, 19] (14)                     
+                                                         W: dense_80_weights                                           
+                                                         W: dense_80_bias                                              
+                                                         O: dense_80_output     [1, 1, 1, 19] (15)                     
+------------------------------------------------------------------------------------------------------------------------
+15    dense_80_nl     7   nl     19          0           I: dense_80_output     [1, 1, 1, 19] (15)                     
+                                                         O: dense_80_nl_output  [1, 1, 1, 19] (16)                     
+------------------------------------------------------------------------------------------------------------------------
+16    dense_81        8   dense  380         1520        I: dense_80_nl_output  [1, 1, 1, 19] (16)                     
+                                                         W: dense_81_weights                                           
+                                                         W: dense_81_bias                                              
+                                                         O: dense_81_output     [1, 1, 1, 19] (17)                     
+------------------------------------------------------------------------------------------------------------------------
+17    dense_81_nl     8   nl     19          0           I: dense_81_output     [1, 1, 1, 19] (17)                     
+                                                         O: dense_81_nl_output  [1, 1, 1, 19] (18)                     
+------------------------------------------------------------------------------------------------------------------------
+18    dense_82        9   dense  160         640         I: dense_81_nl_output  [1, 1, 1, 19] (18)                     
+                                                         W: dense_82_weights                                           
+                                                         W: dense_82_bias                                              
+                                                         O: dense_82_output     [1, 1, 1, 8] (19)                      
+------------------------------------------------------------------------------------------------------------------------
+19    dense_82_nl     9   nl     8           0           I: dense_82_output     [1, 1, 1, 8] (19)                      
+                                                         O: dense_82_nl_output  [1, 1, 1, 8] (20)                      
+------------------------------------------------------------------------------------------------------------------------
+20    dense_83        10  dense  9           36          I: dense_82_nl_output  [1, 1, 1, 8] (20)                      
+                                                         W: dense_83_weights                                           
+                                                         W: dense_83_bias                                              
+                                                         O: dense_83_output     [1, 1, 1, 1] (21)                      
+------------------------------------------------------------------------------------------------------------------------
+21    dense_83_nl     10  nl     1           0           I: dense_83_output     [1, 1, 1, 1] (21)                      
+                                                         O: dense_83_nl_output  [1, 1, 1, 1] (22)                      
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+Complexity report per layer - macc=6,771 weights=26,136 act=304 ram_io=80
+----------------------------------------------------------------------------
+id   name          c_macc                    c_rom                     c_id
+----------------------------------------------------------------------------
+0    dense_73      ||||               5.6%   ||||               5.8%   [0] 
+0    dense_73_nl   |                  0.3%   |                  0.0%   [1] 
+1    dense_74      ||||               5.6%   ||||               5.8%   [2] 
+1    dense_74_nl   |                  0.3%   |                  0.0%   [3] 
+2    dense_75      ||||||||          11.2%   ||||||||          11.6%   [4] 
+2    dense_75_nl   |                  0.6%   |                  0.0%   [5] 
+3    dense_76      ||||||||||||||||  21.9%   ||||||||||||||||  22.7%   [6] 
+3    dense_76_nl   |                  0.6%   |                  0.0%   [7] 
+4    dense_77      ||||||||||||||||  21.9%   ||||||||||||||||  22.7%   [8] 
+4    dense_77_nl   |                  0.6%   |                  0.0%   [9] 
+5    dense_78      ||||||||          10.9%   ||||||||          11.3%   [10]
+5    dense_78_nl   |                  0.3%   |                  0.0%   [11]
+6    dense_79      ||||               5.6%   ||||               5.8%   [12]
+6    dense_79_nl   |                  0.3%   |                  0.0%   [13]
+7    dense_80      ||||               5.6%   ||||               5.8%   [14]
+7    dense_80_nl   |                  0.3%   |                  0.0%   [15]
+8    dense_81      ||||               5.6%   ||||               5.8%   [16]
+8    dense_81_nl   |                  0.3%   |                  0.0%   [17]
+9    dense_82      ||                 2.4%   ||                 2.4%   [18]
+9    dense_82_nl   |                  0.1%   |                  0.0%   [19]
+10   dense_83      |                  0.1%   |                  0.1%   [20]
+10   dense_83_nl   |                  0.0%   |                  0.0%   [21]
+
+Generated files (5)
+------------------------------------------------------------------------------------------------------------------------
+/Users/dominikpiorkowski/.stm32cubemx/network_config.h
+/Users/dominikpiorkowski/.stm32cubemx/network.h
+/Users/dominikpiorkowski/.stm32cubemx/network.c
+/Users/dominikpiorkowski/.stm32cubemx/network_data.h
+/Users/dominikpiorkowski/.stm32cubemx/network_data.c
