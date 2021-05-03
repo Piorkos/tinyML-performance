@@ -56,7 +56,7 @@ int buf_len = 0;
 ai_handle network;
 
 uint32_t timer_counter = 0;
-uint32_t timestamp;
+uint32_t timestamp = 0;
 
 float aiOutData[3][AI_NETWORK_OUT_1_SIZE];
 uint8_t activations[AI_NETWORK_DATA_ACTIVATIONS_SIZE];
@@ -121,6 +121,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_CRC_Init();
   MX_TIM16_Init();
+
   /* USER CODE BEGIN 2 */
   AI_Init(ai_network_data_weights_get(), activations);
 
@@ -132,16 +133,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //	  TESTY IMERA
-//	  buf_len = sprintf(buf, "timer START \n");
-//	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
-//	  timestamp = htim16.Instance->CNT;
-//	  HAL_Delay(100);
-//	  buf_len = sprintf(buf, "timer STOP: %lu \n", (htim16.Instance->CNT - timestamp));
-//	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
-
-
-
 	  buf_len = sprintf(buf, "M7 Running inference \n");
 	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 
@@ -161,7 +152,8 @@ int main(void)
 	  uint32_t predicted_class_2 = argmax(aiOutData[1], AI_NETWORK_OUT_1_SIZE);
 	  uint32_t predicted_class_3 = argmax(aiOutData[2], AI_NETWORK_OUT_1_SIZE);
 
-	  buf_len = sprintf(buf, "Iference duration: (%lu s) + %lu*0.1us \n", timer_counter, (htim16.Instance->CNT - timestamp));
+
+	  buf_len = sprintf(buf, "Iference duration: (%lu s) + %lu*0.1ms \n", timer_counter, (htim16.Instance->CNT - timestamp));
 	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 
 	  buf_len = sprintf(buf, "1 predicted class: %d - %s \n", (int) predicted_class_1, labels[predicted_class_1]);
@@ -239,9 +231,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if (htim == &htim16 )
 	{
 		++timer_counter;
-//
-//		buf_len = sprintf(buf, "timer INTERRUPT: %lu - %lu \n", timer_counter, timestamp);
-//		HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 	}
 }
 
