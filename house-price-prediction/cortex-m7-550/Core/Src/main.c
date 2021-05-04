@@ -6,8 +6,10 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c)	2021 STMicroelectronics,
+  * 				2021 Dominik Piórkowski.
+  *
+  * All rights reserved.
   *
   * This software component is licensed by ST under BSD 3-Clause license,
   * the "License"; You may not use this file except in compliance with the
@@ -130,7 +132,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  buf_len = sprintf(buf, "M7-550 HPP Running inference \n");
+	  buf_len = sprintf(buf, "M7-550 Running HPP inference \n");
 	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 
 	  timestamp = htim16.Instance->CNT;
@@ -145,7 +147,7 @@ int main(void)
 	  AI_Run(aiInDataHouse2, aiOutData[2]);
 
 
-	  buf_len = sprintf(buf, "Iference duration: (%lu s) + %lu*0.01ms \n", timer_counter, (htim16.Instance->CNT - timestamp));
+	  buf_len = sprintf(buf, "Inference duration: (%lu s) + %lu*0.01ms \n", timer_counter, (htim16.Instance->CNT - timestamp));
 	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 
 	  buf_len = sprintf(buf, "1 predicted price: %f \n", aiOutData[0][0]);
