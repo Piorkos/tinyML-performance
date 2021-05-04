@@ -9,7 +9,7 @@
   * Copyright (c)	2021 STMicroelectronics,
   * 				2021 Dominik Piórkowski.
   *
-  * All rights reserved.</center></h2>
+  * All rights reserved.
   *
   * This software component is licensed by ST under BSD 3-Clause license,
   * the "License"; You may not use this file except in compliance with the
