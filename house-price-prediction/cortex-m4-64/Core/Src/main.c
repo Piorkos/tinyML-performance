@@ -6,8 +6,10 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c)	2021 STMicroelectronics,
+  * 				2021 Dominik Piórkowski.
+  *
+  * All rights reserved.
   *
   * This software component is licensed by ST under BSD 3-Clause license,
   * the "License"; You may not use this file except in compliance with the
@@ -26,7 +28,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 
+#include "ai_platform.h"
+#include "network.h"
+#include "network_data.h"
+#include "test_input.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,13 +53,22 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+char buf[50];
+int buf_len = 0;
+ai_handle network;
 
+uint32_t timer_counter = 0;
+uint32_t timestamp = 0;
+
+float aiOutData[3][AI_NETWORK_OUT_1_SIZE];
+uint8_t activations[AI_NETWORK_DATA_ACTIVATIONS_SIZE];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+static void AI_Init(ai_handle w_addr, ai_handle act_addr);
+static void AI_Run(float *pIn, float *pOut);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -91,14 +107,41 @@ int main(void)
   MX_CRC_Init();
   MX_TIM16_Init();
   MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
 
+  /* USER CODE BEGIN 2 */
+  AI_Init(ai_network_data_weights_get(), activations);
+  //  Start timer/counter
+  HAL_TIM_Base_Start_IT(&htim16);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  buf_len = sprintf(buf, "M4-64 Running HPP inference \n");
+	  HAL_UART_Transmit(&huart1, (uint8_t *)buf, buf_len, 100);
+
+	  timestamp = htim16.Instance->CNT;
+
+	  //	  predicted price should be = 207305
+	  AI_Run(aiInDataHouse0, aiOutData[0]);
+
+	  //	  predicted price should be = 408886
+	  AI_Run(aiInDataHouse1, aiOutData[1]);
+
+	  //	  predicted price should be = 392844
+	  AI_Run(aiInDataHouse2, aiOutData[2]);
+
+
+	  buf_len = sprintf(buf, "Iference duration: (%lu 0.1s) + %lu*0.01ms \n", timer_counter, (htim16.Instance->CNT - timestamp));
+	  HAL_UART_Transmit(&huart1, (uint8_t *)buf, buf_len, 100);
+
+	  buf_len = sprintf(buf, "1 predicted price: %f \n", aiOutData[0][0]);
+	  HAL_UART_Transmit(&huart1, (uint8_t *)buf, buf_len, 100);
+	  buf_len = sprintf(buf, "2 predicted price: %f \n", aiOutData[1][0]);
+	  HAL_UART_Transmit(&huart1, (uint8_t *)buf, buf_len, 100);
+	  buf_len = sprintf(buf, "3 predicted price: %f \n", aiOutData[2][0]);
+	  HAL_UART_Transmit(&huart1, (uint8_t *)buf, buf_len, 100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -171,7 +214,63 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (htim == &htim16 )
+	{
+		++timer_counter;
+	}
+}
 
+
+static void AI_Init(ai_handle w_addr, ai_handle act_addr)
+{
+	ai_error err;
+
+	/* 1 - Create an instance of the model */
+	err = ai_network_create(&network, AI_NETWORK_DATA_CONFIG);
+	if (err.type != AI_ERROR_NONE) {
+		printf("ai_network_create error - type=%d code=%d\r\n", err.type, err.code);
+		Error_Handler();
+	}
+
+	/* 2 - Initialize the instance */
+	const ai_network_params params = {
+			AI_NETWORK_DATA_WEIGHTS(w_addr),
+			AI_NETWORK_DATA_ACTIVATIONS(act_addr)
+	};
+
+	if (!ai_network_init(network, &params))
+	{
+		err = ai_network_get_error(network);
+		printf("ai_network_init error - type=%d code=%d\r\n", err.type, err.code);
+		Error_Handler();
+	}
+}
+static void AI_Run(float *pIn, float *pOut)
+{
+	ai_i32 batch;
+	ai_error err;
+
+	/* 1 - Create the AI buffer IO handlers with the default definition */
+	ai_buffer ai_input[AI_NETWORK_IN_NUM] = AI_NETWORK_IN;
+	ai_buffer ai_output[AI_NETWORK_OUT_NUM] = AI_NETWORK_OUT;
+
+	/* 2 - Update IO handlers with the data payload */
+	ai_input[0].n_batches = 1;
+	ai_input[0].data = AI_HANDLE_PTR(pIn);
+	ai_output[0].n_batches = 1;
+	ai_output[0].data = AI_HANDLE_PTR(pOut);
+
+	batch = ai_network_run(network, ai_input, ai_output);
+	if (batch != 1)
+	{
+		err = ai_network_get_error(network);
+		buf_len = sprintf(buf, "AI ai_network_run error - type=%d code=%d \n", err.type, err.code);
+		HAL_UART_Transmit(&huart1, (uint8_t *)buf, buf_len, 100);
+		Error_Handler();
+	}
+}
 /* USER CODE END 4 */
 
 /**
