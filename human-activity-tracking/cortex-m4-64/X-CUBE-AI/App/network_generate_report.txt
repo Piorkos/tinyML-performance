@@ -1,0 +1,134 @@
+Neural Network Tools for STM32AI v1.4.1 (STM.ai v6.0.0-RC6)
+Created date       : 2021-05-04 07:11:08
+Parameters         : generate --name network -m /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/human_activity_recognition/human_activity_recognition.h5 --type keras --compression 1 --verbosity 1 --workspace /var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace610689830587715569678953291656843 --output /Users/dominikpiorkowski/.stm32cubemx
+
+Exec/report summary (generate)
+------------------------------------------------------------------------------------------------------------------------
+model file         : /Users/dominikpiorkowski/Desktop/drive/projekty/ML models/human_activity_recognition/human_activity_recognition.h5
+type               : keras
+c_name             : network
+compression        : None
+quantize           : None
+workspace dir      : /private/var/folders/f_/3ctn9bds16dg59_mv864026c0000gn/T/mxAI_workspace610689830587715569678953291656843
+output dir         : /Users/dominikpiorkowski/.stm32cubemx
+
+model_name         : human_activity_recognition
+model_hash         : 14688e363602ed20660f1101e6dde684
+input              : input_0 [78 items, 312 B, ai_float, FLOAT32, (26, 1, 3)]
+inputs (total)     : 312 B
+output             : dense_41_nl [3 items, 12 B, ai_float, FLOAT32, (1, 1, 3)]
+outputs (total)    : 12 B
+params #           : 12,075 items (47.17 KiB)
+macc               : 24,120
+weights (ro)       : 48,300 B (47.17 KiB) 
+activations (rw)   : 1,600 B (1.56 KiB) 
+ram (total)        : 1,924 B (1.88 KiB) = 1,600 + 312 + 12
+
+Model name - human_activity_recognition ['input_0'] ['dense_41_nl']
+-----------------------------------------------------------------------------------------------------------------------------------
+id   layer (type)                  shape          param/size      macc     connected to   |   c_size   c_macc          c_type     
+-----------------------------------------------------------------------------------------------------------------------------------
+0    input_0 (Input)               (h:26, c:3)                                            |                           
+     conv1d_35 (Conv2D)            (h:24, c:16)   160/640         3,472    input_0        |            +384(+11.1%)    conv2d()[0]
+     conv1d_35_nl (Nonlinearity)   (h:24, c:16)                   384      conv1d_35      |            -384(-100.0%)  
+-----------------------------------------------------------------------------------------------------------------------------------
+1    conv1d_36 (Conv2D)            (h:22, c:8)    392/1,568       8,456    conv1d_35_nl   |            +176(+2.1%)     conv2d()[1]
+     conv1d_36_nl (Nonlinearity)   (h:22, c:8)                    176      conv1d_36      |            -176(-100.0%)  
+-----------------------------------------------------------------------------------------------------------------------------------
+3    flatten_20 (Reshape)          (c:176)                                 conv1d_36_nl   |                           
+-----------------------------------------------------------------------------------------------------------------------------------
+4    dense_40 (Dense)              (c:64)         11,328/45,312   11,328   flatten_20     |                            dense()[2] 
+     dense_40_nl (Nonlinearity)    (c:64)                         64       dense_40       |                            nl()[3]    
+-----------------------------------------------------------------------------------------------------------------------------------
+5    dense_41 (Dense)              (c:3)          195/780         195      dense_40_nl    |                            dense()[4] 
+     dense_41_nl (Nonlinearity)    (c:3)                          45       dense_41       |                            nl()/o[5]  
+-----------------------------------------------------------------------------------------------------------------------------------
+model/c-model: macc=24,120/24,120  weights=48,300/48,300  activations=--/1,600 io=--/324
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name         : human_activity_recognition
+c-name             : network
+c-node #           : 6
+c-array #          : 15
+activations size   : 1600
+weights size       : 48300
+macc               : 24120
+inputs             : ['input_0_output_array']
+outputs            : ['dense_41_nl_output_array']
+
+
+C-Arrays (15)
+------------------------------------------------------------------------------------------------------------------------
+c_id  name (*_array)      item/size           mem-pool     c-type       fmt    comment            
+------------------------------------------------------------------------------------------------------------------------
+0     input_0_output      78/312              user         float        float  /input             
+1     conv1d_35_output    384/1536            activations  float        float                     
+2     conv1d_36_output    176/704             activations  float        float                     
+3     dense_40_output     64/256              activations  float        float                     
+4     dense_40_nl_output  64/256              activations  float        float                     
+5     dense_41_output     3/12                activations  float        float                     
+6     dense_41_nl_output  3/12                user         float        float  /output            
+7     conv1d_35_weights   144/576             weights      const float  float                     
+8     conv1d_35_bias      16/64               weights      const float  float                     
+9     conv1d_36_weights   384/1536            weights      const float  float                     
+10    conv1d_36_bias      8/32                weights      const float  float                     
+11    dense_40_weights    11264/45056         weights      const float  float                     
+12    dense_40_bias       64/256              weights      const float  float                     
+13    dense_41_weights    192/768             weights      const float  float                     
+14    dense_41_bias       3/12                weights      const float  float                     
+------------------------------------------------------------------------------------------------------------------------
+
+
+C-Layers (6)
+------------------------------------------------------------------------------------------------------------------------
+c_id  name (*_layer)  id  layer_t macc        rom         tensors                shape (array id)                       
+------------------------------------------------------------------------------------------------------------------------
+0     conv1d_35       0   conv2d  3856        640         I: input_0_output      [1, 26, 1, 3] (0)                      
+                                                          W: conv1d_35_weights                                          
+                                                          W: conv1d_35_bias                                             
+                                                          O: conv1d_35_output    [1, 24, 1, 16] (1)                     
+------------------------------------------------------------------------------------------------------------------------
+1     conv1d_36       1   conv2d  8632        1568        I: conv1d_35_output    [1, 24, 1, 16] (1)                     
+                                                          W: conv1d_36_weights                                          
+                                                          W: conv1d_36_bias                                             
+                                                          O: conv1d_36_output    [1, 22, 1, 8] (2)                      
+------------------------------------------------------------------------------------------------------------------------
+2     dense_40        4   dense   11328       45312       I: conv1d_36_output0   [1, 1, 1, 176] (2)                     
+                                                          W: dense_40_weights                                           
+                                                          W: dense_40_bias                                              
+                                                          O: dense_40_output     [1, 1, 1, 64] (3)                      
+------------------------------------------------------------------------------------------------------------------------
+3     dense_40_nl     4   nl      64          0           I: dense_40_output     [1, 1, 1, 64] (3)                      
+                                                          O: dense_40_nl_output  [1, 1, 1, 64] (4)                      
+------------------------------------------------------------------------------------------------------------------------
+4     dense_41        5   dense   195         780         I: dense_40_nl_output  [1, 1, 1, 64] (4)                      
+                                                          W: dense_41_weights                                           
+                                                          W: dense_41_bias                                              
+                                                          O: dense_41_output     [1, 1, 1, 3] (5)                       
+------------------------------------------------------------------------------------------------------------------------
+5     dense_41_nl     5   nl      45          0           I: dense_41_output     [1, 1, 1, 3] (5)                       
+                                                          O: dense_41_nl_output  [1, 1, 1, 3] (6)                       
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+Complexity report per layer - macc=24,120 weights=48,300 act=1,600 ram_io=324
+----------------------------------------------------------------------------
+id   name          c_macc                    c_rom                     c_id
+----------------------------------------------------------------------------
+0    conv1d_35     ||||||            16.0%   |                  1.3%   [0] 
+1    conv1d_36     ||||||||||||      35.8%   |                  3.2%   [1] 
+4    dense_40      ||||||||||||||||  47.0%   ||||||||||||||||  93.8%   [2] 
+4    dense_40_nl   |                  0.3%   |                  0.0%   [3] 
+5    dense_41      |                  0.8%   |                  1.6%   [4] 
+5    dense_41_nl   |                  0.2%   |                  0.0%   [5] 
+
+Generated files (5)
+------------------------------------------------------------------------------------------------------------------------
+/Users/dominikpiorkowski/.stm32cubemx/network_config.h
+/Users/dominikpiorkowski/.stm32cubemx/network.h
+/Users/dominikpiorkowski/.stm32cubemx/network.c
+/Users/dominikpiorkowski/.stm32cubemx/network_data.h
+/Users/dominikpiorkowski/.stm32cubemx/network_data.c
