@@ -6,8 +6,10 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c)	2021 STMicroelectronics,
+  * 				2021 Dominik Piórkowski.
+  *
+  * All rights reserved.
   *
   * This software component is licensed by ST under BSD 3-Clause license,
   * the "License"; You may not use this file except in compliance with the
@@ -152,7 +154,7 @@ int main(void)
 	  uint32_t predicted_class_3 = argmax(aiOutData[2], AI_NETWORK_OUT_1_SIZE);
 
 
-	  buf_len = sprintf(buf, "Iference duration: (%lu s) + %lu*0.01ms \n", timer_counter, (htim16.Instance->CNT - timestamp));
+	  buf_len = sprintf(buf, "Inference duration: (%lu s) + %lu*0.01ms \n", timer_counter, (htim16.Instance->CNT - timestamp));
 	  HAL_UART_Transmit(&huart3, (uint8_t *)buf, buf_len, 100);
 
 	  buf_len = sprintf(buf, "1 predicted class: %d - %s \n", (int) predicted_class_1, labels[predicted_class_1]);
