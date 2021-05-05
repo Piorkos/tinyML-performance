@@ -4,8 +4,8 @@ Inference for simple regression model, to predict house price based on its attri
 
 - #parameters: 6,534
 - Complexity: 6,771 MACC
-- Flash occupation: 25.52 KB
-- RAM: 0.384 KB
+- Flash occupation (without quantization): 25.52 KB
+- RAM (without quantization): 0.384 KB
 
 ```
 Layer (type)                 Output Shape              Param #   
