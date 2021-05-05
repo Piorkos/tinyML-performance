@@ -1,3 +1,5 @@
+### Human Activity Recognition
+
 Inference for Human Activity Recogniotion ML model. It recognizes the kind of human activity (walking, running, stationary) based on data 
 from a 3-axis accelerometer
 
