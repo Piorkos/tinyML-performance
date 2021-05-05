@@ -7,6 +7,10 @@ Inference for simple regression model, to predict house price based on its attri
 - Flash occupation (without quantization): 25.52 KB
 - RAM (without quantization): 0.384 KB
 
+<p align="center">
+  <img src="/house-price-prediction/predict_house_price_graph.png" />
+</p>
+
 ```
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -37,6 +41,4 @@ Trainable params: 6,534
 Non-trainable params: 0
 ```
 
-<p align="center">
-  <img src="/house-price-prediction/predict_house_price_graph.png" />
-</p>
+
