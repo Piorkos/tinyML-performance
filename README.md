@@ -4,18 +4,15 @@ I tested different ML models (from simple NN, to complex CNN) on various Cortex-
 
 ## ML models
 I used 3 different ML models and deployed them to MCU using Cube.AI. The models have following parameters:
-- Simple regression model, to predict house price based on its attributes.
+- Simple regression model, to predict house price based on its attributes ([more details](https://github.com/Piorkos/tinyML-performance/tree/main/house-price-prediction)).
   - #parameters: 6,534
   - MACC: 6,771
-  - types of layers: Dense
-- Human Activity Recognition. It recognizes the kind of human activity (walking, running, stationary) based on data from a 3-axis accelerometer.
+- Human Activity Recognition. It recognizes the kind of human activity (walking, running, stationary) based on data from a 3-axis accelerometer ([more details](https://github.com/Piorkos/tinyML-performance/tree/main/human-activity-recognition)).
   - #parameters: 12,075
   - MACC: 24,120
-  - types of layers: Conv1D, Flattern, Dense
-- Image Classification. Complex Convolutional Neural Network, trained on Fashion MNIST dataset.
+- Image Classification. Complex Convolutional Neural Network, trained on Fashion MNIST dataset ([more details](https://github.com/Piorkos/tinyML-performance/tree/main/image-classification)).
   - #parameters: 412, 778
   - MACC: 2,323,968
-  - types of layers: Conv2D, MaxPooling2D, Flatten, Dense
 
 
 ## Results
