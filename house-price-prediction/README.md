@@ -1,3 +1,5 @@
+### Predict House Price
+
 Inference for simple regression model, to predict house price based on its attributes.
 
 - #parameters: 6,534
