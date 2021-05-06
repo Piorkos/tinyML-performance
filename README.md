@@ -11,7 +11,7 @@ I tested different ML models (from simple NN, to complex CNN) on various Cortex-
 ### testing method
 Tests were performed on Cortex-M4 @48 MHz, Cortex-M4 @64 MHz, Cortex-M7 @180 MHz and Cortex-M7 @550MHz. I used Cube.AI to deploy ML models on microcontrollers. Inference was the only thing running on the MCU, there were no other tasks. Inference duration was measured with the use of timer. For every model, inference was executed 3 times and duration of all 3 inferences was measured and then the average was calculated. This also allowed to reduce the impact of clock cycles used for reading from the timer. 
 
-I did not use pruning nor quantization (except Image Classification task), so performance and size of the models still can be improved. Image Classification model was too big to fit on the Flash, so I did quantization in this case.
+I did not perform pruning nor quantization (except Image Classification task), so performance and size of the models still can be improved. Image Classification model was too big to fit on the Flash, so I did quantization in this case.
 
 The models have following parameters:
 - Simple regression model, to predict house price based on its attributes ([more details](https://github.com/Piorkos/tinyML-performance/tree/main/house-price-prediction)).
