@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="/img/mcu_header.jpg" />
+</p>
+
 # tinyML - performance
 I couldn’t find much information about the performance of Machine Learning inference on microcontrollers, so I decided to do the tests by myself.
 
