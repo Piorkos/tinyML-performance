@@ -26,14 +26,14 @@ The models have following parameters:
 ### results
 Results of the tests are listed below. First table presents inference latency. The second table shows the same, but in different form, it indicates how many inferences could be executed per second. Please keep in mind that no other tasks were running on the MCU, not even collecting nor processing input data.
 
-|  ML model | Cortex-M4 48 MHz | Cortex-M4 64 MHz | Cortex-M7 180 MHz | Cortex-M7 180 MHz
+|  ML model | Cortex-M4 48 MHz | Cortex-M4 64 MHz | Cortex-M7 180 MHz | Cortex-M7 550 MHz
 ----------- | ---------------- | ---------------- | ----------------- | -----------------
 predict house price | 1.35 ms | 1.08 ms | 0.20 ms | 0.06 ms |
 human activity recognition | 6.7 ms | 5.2 ms  | 1.01 ms | 0.34 ms |
 image classification | 547 ms | 423 ms  | 82.4 ms | 27.0 ms |
 
 
-| ML model  | Cortex-M4 48 MHz | Cortex-M4 64 MHz | Cortex-M7 180 MHz | Cortex-M7 180 MHz
+| ML model  | Cortex-M4 48 MHz | Cortex-M4 64 MHz | Cortex-M7 180 MHz | Cortex-M7 550 MHz
 ----------- | ---------------- | ---------------- | ----------------- | -----------------
 predict house price | 740 Hz | 926 Hz | 5,000 Hz | 16,700 Hz |
 human activity recognition | 149 Hz | 192 Hz | 990 Hz | 2,941 Hz |
