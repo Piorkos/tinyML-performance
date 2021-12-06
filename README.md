@@ -51,3 +51,4 @@ RAM | 0.384 KB  | 1.88 KB | 66.10 KB
 To be honest, I've been surprised how good the performance is. There are many, many cases in which Machine Learning can be implemented on MCU and provide satisfying performance.
 
 However the issue is with the memory. Complex models won't fit on the small size of Flash or RAM. Of course there are techniques which can help (like quantization or pruning) and they will help in many cases but not always. First I wanted to use MobileNet for image classification, but even after quantization it was too big to fit on the memory.
+
