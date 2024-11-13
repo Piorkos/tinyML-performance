@@ -2,8 +2,8 @@
   <img src="/img/mcu_header.jpg" />
 </p>
 
-# tinyML - performance
-I couldn’t find much information about the performance of Machine Learning inference on microcontrollers, so I decided to do the tests by myself.
+# Edge AI - performance
+I couldn’t find much information about the performance of edge AI inference on microcontrollers, so I decided to conduct the tests myself.
 
 I tested different ML models (from simple NN, to complex CNN) on various Cortex-M microcontrollers. If someone is considering implementing ML inference on MCU, then this document should give an idea if performance-wise it will be feasible and what kind of MCU would be required.
 
